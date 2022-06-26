@@ -1,0 +1,84 @@
+{% extends 'indexC.html' %} 
+{% block content %}
+
+<div class="col-lg-12 col-md-12">
+  <div class="login_part_form">
+      <div class="login_part_form_iner">
+              <center><h3>Please Edit here..</h3></center>
+           {% for i in data %}
+          <form class="row contact_form" action="{% url 'Cupdate' uid=i.id %}"  method="post" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+              <div class="col-md-12 form-group p_star">
+                  <input type="text" class="form-control" id="fname" aria-required="true" name="fname" value="{{i.Fname}}"
+                    placeholder="First Name" required>       
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="lname" aria-required="true" name="lname" value="{{i.Lname}}"
+                    placeholder="Last Name" required>       
+            </div>
+              <div class="col-md-12 form-group p_star">
+                  <input type="file" class="form-control" id="file"  name="img" value=""
+                      placeholder="Upload Image">
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="Relationship"  name="Relationship" value="{{i.Relationship}}"
+                    placeholder="Relationship Status">
+              </div>
+             <div class="col-md-12 form-group p_star">
+                <div class="modal-gender" >
+                    <label name="gender" for="" value="{{i.gender}}" ></label>
+                  </div>
+                  
+                  <div class="modal-gender-choice">
+                     
+                    <div class="modal-gender-name">
+                         
+                        <label for="">Female</label>
+                         
+                        <input type="radio" value="{{i.female}}" name="gender">
+                         
+                    <!-- </div>
+                     
+                    <div class="modal-gender-name"> -->
+                         
+                        <label for="">Male</label>
+                         
+                        <input type="radio" value="{{i.male}}" name="gender">
+                         
+                    <!-- </div>
+                     
+                    <div class="modal-gender-name"> -->
+                         
+                        <label for="">Custom</label>
+                         
+                        <input type="radio" value="{{i.custom}}" name="gender">
+                         
+                    </div>
+                </div>
+             </div>
+<br><br>
+              <div class="col-md-12 form-group p_star">
+                  <textarea type="text" class="form-control" id="adrs" aria-required="true" name="adrs" value="{{i.adrs}}"
+                      placeholder="Address">{{i.adrs}}</textarea required>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                  <input type="number" class="form-control" id="number" aria-required="true" name="number" value="{{i.number}}"
+                      placeholder="Phone Number" required>
+              </div>
+              <div class="col-md-12 form-group p_star">
+                  <input type="text" class="form-control" id="location" aria-required="true" name="location" value="{{i.location}}"
+                      placeholder="Location" required>
+              </div>
+              <div class="col-md-12 form-group">
+                 <center> 
+                     <input type="submit" value="Submit" class="btn btn-success">
+                </center>
+                  <!-- <a class="lost_pass" href="#">forget password?</a> -->
+              </div>
+          </form>
+          {% endfor %}
+      </div>
+  </div>
+</div>
+
+{% endblock %}
